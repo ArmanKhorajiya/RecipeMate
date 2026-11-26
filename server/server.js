@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const recipeRoutes = require("./routes/recipeRoutes");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const path = require("path");
 
 dotenv.config();
 
@@ -14,6 +15,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use(
+  "/recipe-images",
+  express.static(path.join(__dirname, "public", "recipe-images")),
+);
 
 // Main route
 app.get("/", (req, res) => {
