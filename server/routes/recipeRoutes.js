@@ -8,12 +8,38 @@ const escapeRegex = (value) => {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 };
 
-// GET all recipes
+// Pagination helper
+const getPagination = (req) => {
+  const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
+
+  const requestedLimit = parseInt(req.query.limit, 10) || 50;
+  const limit = Math.min(Math.max(requestedLimit, 1), 100);
+
+  return {
+    page,
+    limit,
+    skip: (page - 1) * limit,
+  };
+};
+
+// GET recipes with pagination
 router.get("/", async (req, res) => {
   try {
-    const recipes = await Recipe.find();
+    const { page, limit, skip } = getPagination(req);
 
-    res.status(200).json(recipes);
+    const [recipes, total] = await Promise.all([
+      Recipe.find().sort({ name: 1 }).skip(skip).limit(limit).lean(),
+
+      Recipe.countDocuments(),
+    ]);
+
+    res.status(200).json({
+      recipes,
+      page,
+      limit,
+      total,
+      hasMore: skip + recipes.length < total,
+    });
   } catch (error) {
     res.status(500).json({
       message: "Failed to fetch recipes",
@@ -22,12 +48,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-// SEARCH and rank recipes by matching ingredients
+// SEARCH and rank recipes with pagination
 router.get("/search", async (req, res) => {
   try {
     const ingredients = req.query.ingredients;
 
-    if (!ingredients) {
+    if (!ingredients || !ingredients.trim()) {
       return res.status(400).json({
         message: "Please provide ingredients to search",
       });
@@ -43,20 +69,28 @@ router.get("/search", async (req, res) => {
     ];
 
     if (ingredientList.length === 0) {
-      return res.status(200).json([]);
+      return res.status(200).json({
+        recipes: [],
+        page: 1,
+        limit: 50,
+        total: 0,
+        hasMore: false,
+      });
     }
+
+    const { page, limit, skip } = getPagination(req);
 
     const searchPatterns = ingredientList.map(
       (ingredient) => new RegExp(escapeRegex(ingredient), "i"),
     );
 
-    const recipes = await Recipe.find({
+    const matchedRecipes = await Recipe.find({
       ingredients: {
         $in: searchPatterns,
       },
-    });
+    }).lean();
 
-    const rankedRecipes = recipes
+    const rankedRecipes = matchedRecipes
       .map((recipe) => {
         const recipeIngredients = recipe.ingredients.map((ingredient) =>
           ingredient.toLowerCase(),
@@ -73,9 +107,26 @@ router.get("/search", async (req, res) => {
           matchedCount,
         };
       })
-      .sort((a, b) => b.matchedCount - a.matchedCount);
+      .sort((a, b) => {
+        if (b.matchedCount !== a.matchedCount) {
+          return b.matchedCount - a.matchedCount;
+        }
 
-    res.status(200).json(rankedRecipes.map((item) => item.recipe));
+        return a.recipe.name.localeCompare(b.recipe.name);
+      });
+
+    const total = rankedRecipes.length;
+    const recipes = rankedRecipes
+      .slice(skip, skip + limit)
+      .map((item) => item.recipe);
+
+    res.status(200).json({
+      recipes,
+      page,
+      limit,
+      total,
+      hasMore: skip + recipes.length < total,
+    });
   } catch (error) {
     res.status(500).json({
       message: "Failed to search recipes",

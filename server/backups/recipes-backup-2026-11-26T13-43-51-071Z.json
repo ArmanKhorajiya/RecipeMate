@@ -1,0 +1,345 @@
+[
+  {
+    "_id": "6b06b901125a625fee1a06c8",
+    "name": "Tomato Onion Sandwich",
+    "ingredients": [
+      "bread",
+      "tomato",
+      "onion",
+      "butter"
+    ],
+    "instructions": [
+      "Slice the tomato and onion.",
+      "Spread butter on the bread.",
+      "Add tomato and onion slices.",
+      "Toast the sandwich until golden."
+    ],
+    "category": "Breakfast",
+    "cookingTime": 10,
+    "image": "https://loremflickr.com/640/480/Tomato%20Onion%20Sandwich%20food",
+    "createdAt": "2026-11-25T10:31:29.023Z",
+    "updatedAt": "2026-11-26T11:48:07.655Z",
+    "__v": 0
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95b7",
+    "name": "Vegetable Poha",
+    "__v": 0,
+    "category": "Breakfast",
+    "cookingTime": 20,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Vegetable_Poha.jpg/960px-Vegetable_Poha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "poha",
+      "onion",
+      "potato",
+      "peanuts",
+      "lemon"
+    ],
+    "instructions": [
+      "Rinse the poha and drain it.",
+      "Cook onion and potato in a pan.",
+      "Add peanuts and poha.",
+      "Mix well and finish with lemon juice."
+    ],
+    "updatedAt": "2026-11-26T11:57:08.006Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95b8",
+    "name": "Masala Maggi",
+    "__v": 0,
+    "category": "Snack",
+    "cookingTime": 10,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Vegetable_Masala_Maggi.jpg/960px-Vegetable_Masala_Maggi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "noodles",
+      "onion",
+      "tomato",
+      "peas",
+      "masala"
+    ],
+    "instructions": [
+      "Chop the onion and tomato.",
+      "Cook them with peas in a pan.",
+      "Add water, noodles, and masala.",
+      "Cook until the noodles are soft."
+    ],
+    "updatedAt": "2026-11-26T11:57:10.152Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95b9",
+    "name": "Aloo Paratha",
+    "__v": 0,
+    "category": "Breakfast",
+    "cookingTime": 25,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Cheesy_aloo_paratha.jpg/960px-Cheesy_aloo_paratha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "wheat flour",
+      "potato",
+      "chilli",
+      "coriander",
+      "salt"
+    ],
+    "instructions": [
+      "Boil and mash the potatoes.",
+      "Mix with chilli, coriander, and salt.",
+      "Stuff the mixture into wheat dough.",
+      "Roll and cook on a hot tawa."
+    ],
+    "updatedAt": "2026-11-26T11:57:12.318Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95ba",
+    "name": "Vegetable Fried Rice",
+    "__v": 0,
+    "category": "Lunch",
+    "cookingTime": 20,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Vegetable_Fried_Rice_-_PIFSPL_Food_Talk_-_Kolkata_2015-11-01_6815.JPG/960px-Vegetable_Fried_Rice_-_PIFSPL_Food_Talk_-_Kolkata_2015-11-01_6815.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "rice",
+      "carrot",
+      "capsicum",
+      "onion",
+      "soy sauce"
+    ],
+    "instructions": [
+      "Cook the rice and let it cool.",
+      "Chop the vegetables.",
+      "Stir-fry the vegetables in a pan.",
+      "Add rice and soy sauce, then mix."
+    ],
+    "updatedAt": "2026-11-26T11:57:14.441Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95bb",
+    "name": "Paneer Bhurji",
+    "__v": 0,
+    "category": "Dinner",
+    "cookingTime": 15,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Paneer_Bhurji.jpg/960px-Paneer_Bhurji.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "paneer",
+      "onion",
+      "tomato",
+      "turmeric",
+      "chilli"
+    ],
+    "instructions": [
+      "Crumble the paneer.",
+      "Cook onion and tomato with spices.",
+      "Add paneer and mix.",
+      "Cook for a few minutes and serve."
+    ],
+    "updatedAt": "2026-11-26T11:57:16.569Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95bc",
+    "name": "Besan Chilla",
+    "__v": 0,
+    "category": "Breakfast",
+    "cookingTime": 15,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Chilla_besan.JPG/960px-Chilla_besan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "besan",
+      "onion",
+      "tomato",
+      "coriander",
+      "water"
+    ],
+    "instructions": [
+      "Mix besan with water to make a batter.",
+      "Add chopped onion, tomato, and coriander.",
+      "Pour the batter onto a hot tawa.",
+      "Cook both sides until golden."
+    ],
+    "updatedAt": "2026-11-26T11:57:18.693Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95bd",
+    "name": "Garlic Butter Pasta",
+    "__v": 0,
+    "category": "Dinner",
+    "cookingTime": 20,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://loremflickr.com/640/480/Garlic%20Butter%20Pasta%20food",
+    "ingredients": [
+      "pasta",
+      "garlic",
+      "butter",
+      "milk",
+      "cheese"
+    ],
+    "instructions": [
+      "Boil the pasta until cooked.",
+      "Melt butter and sauté garlic.",
+      "Add milk and cheese.",
+      "Mix in the pasta and serve."
+    ],
+    "updatedAt": "2026-11-26T11:48:09.867Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95be",
+    "name": "Banana Smoothie",
+    "__v": 0,
+    "category": "Drink",
+    "cookingTime": 5,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Tricolor_Smoothie%2C_Papaya%2C_Banana_%26_Kiwi_-_Gujarat_-_SHAILI_006.jpg/960px-Tricolor_Smoothie%2C_Papaya%2C_Banana_%26_Kiwi_-_Gujarat_-_SHAILI_006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "banana",
+      "milk",
+      "honey",
+      "ice"
+    ],
+    "instructions": [
+      "Peel and slice the banana.",
+      "Add banana, milk, honey, and ice to a blender.",
+      "Blend until smooth.",
+      "Serve immediately."
+    ],
+    "updatedAt": "2026-11-26T11:57:22.949Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95bf",
+    "name": "Cucumber Salad",
+    "__v": 0,
+    "category": "Salad",
+    "cookingTime": 5,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Fresh_carrots%2C_cucumber%2C_salad_and_green_beans.jpg/960px-Fresh_carrots%2C_cucumber%2C_salad_and_green_beans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "cucumber",
+      "tomato",
+      "onion",
+      "lemon",
+      "salt"
+    ],
+    "instructions": [
+      "Wash and chop the vegetables.",
+      "Add them to a bowl.",
+      "Add lemon juice and salt.",
+      "Mix and serve fresh."
+    ],
+    "updatedAt": "2026-11-26T11:57:25.103Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95c0",
+    "name": "Egg Bhurji",
+    "__v": 0,
+    "category": "Breakfast",
+    "cookingTime": 10,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Egg_bhurji%28anda_bhurji%29.jpg/960px-Egg_bhurji%28anda_bhurji%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "egg",
+      "onion",
+      "tomato",
+      "chilli",
+      "oil"
+    ],
+    "instructions": [
+      "Chop the onion and tomato.",
+      "Cook them with chilli in a pan.",
+      "Beat the eggs and add them.",
+      "Stir until the eggs are fully cooked."
+    ],
+    "updatedAt": "2026-11-26T11:57:28.211Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95c1",
+    "name": "Chana Masala",
+    "__v": 0,
+    "category": "Lunch",
+    "cookingTime": 30,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Indian_food_naan_chana_masala_8285643741_o.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "ingredients": [
+      "chickpeas",
+      "onion",
+      "tomato",
+      "garam masala",
+      "ginger"
+    ],
+    "instructions": [
+      "Cook the chickpeas until soft.",
+      "Prepare a gravy with onion, tomato, and ginger.",
+      "Add chickpeas and garam masala.",
+      "Simmer until the gravy thickens."
+    ],
+    "updatedAt": "2026-11-26T11:57:31.391Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95c2",
+    "name": "Fruit Bowl",
+    "__v": 0,
+    "category": "Snack",
+    "cookingTime": 5,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Fruitbowlwithmelons.jpg/960px-Fruitbowlwithmelons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "apple",
+      "banana",
+      "orange",
+      "grapes",
+      "honey"
+    ],
+    "instructions": [
+      "Wash all the fruits.",
+      "Peel and chop the fruits as needed.",
+      "Combine them in a bowl.",
+      "Add honey and serve."
+    ],
+    "updatedAt": "2026-11-26T11:57:34.705Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95c3",
+    "name": "Masala Oats",
+    "__v": 0,
+    "category": "Breakfast",
+    "cookingTime": 15,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/MIXED_MASALA_OATS.JPG/960px-MIXED_MASALA_OATS.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "oats",
+      "carrot",
+      "peas",
+      "onion",
+      "salt"
+    ],
+    "instructions": [
+      "Chop the vegetables.",
+      "Cook onion and vegetables in a pan.",
+      "Add oats and water.",
+      "Cook until soft and season with salt."
+    ],
+    "updatedAt": "2026-11-26T11:57:37.584Z"
+  },
+  {
+    "_id": "6b081a80adad84e3e6ca95c4",
+    "name": "Lemon Rice",
+    "__v": 0,
+    "category": "Lunch",
+    "cookingTime": 15,
+    "createdAt": "2026-11-26T11:39:44.177Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Tamilnadu_quick_lunch_lemon_rice.jpg/960px-Tamilnadu_quick_lunch_lemon_rice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "ingredients": [
+      "rice",
+      "lemon",
+      "peanuts",
+      "turmeric",
+      "curry leaves"
+    ],
+    "instructions": [
+      "Cook the rice and let it cool.",
+      "Heat oil and add peanuts and curry leaves.",
+      "Add turmeric and lemon juice.",
+      "Mix in the rice and serve."
+    ],
+    "updatedAt": "2026-11-26T11:57:40.688Z"
+  }
+]

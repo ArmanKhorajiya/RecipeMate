@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import ProfileScreen from "./screens/ProfileScreen";
+
 import {
   ActivityIndicator,
   Alert,
@@ -127,23 +129,15 @@ export default function App() {
       if (!response.ok) {
         throw new Error("Failed to fetch recipes");
       }
-      const data: Recipe[] = await response.json();
+      const data = await response.json();
 
-      console.log(
-        "Recipe API data:",
-        JSON.stringify(
-          data.map((recipe) => ({
-            name: recipe.name,
-            image: recipe.image,
-            ingredients: recipe.ingredients,
-            instructions: recipe.instructions,
-          })),
-          null,
-          2,
-        ),
-      );
+      const recipeList = Array.isArray(data) ? data : data.recipes;
 
-      setRecipes(data);
+      if (!Array.isArray(recipeList)) {
+        throw new Error("Invalid recipes response from server");
+      }
+
+      setRecipes(recipeList);
     } catch (err) {
       setError(
         "Unable to connect to RecipeMate server. Check your network and backend.",
@@ -453,90 +447,7 @@ export default function App() {
   const favouriteRecipes = recipes.filter((recipe) =>
     favoriteIds.includes(recipe._id),
   );
-  const renderProfile = () => {
-    if (!authUser) {
-      return (
-        <View
-          style={[
-            styles.profileCard,
-            { backgroundColor: theme.surface, borderColor: theme.border },
-          ]}
-        >
-          <Text style={[styles.profileTitle, { color: theme.accent }]}>
-            Your Profile 👤
-          </Text>
-          <Text style={[styles.profileText, { color: theme.secondaryText }]}>
-            Log in to access your profile and save your favourite recipes.
-          </Text>
-          <TouchableOpacity
-            style={[styles.primaryButton, { backgroundColor: theme.accent }]}
-            onPress={() => setAuthModalVisible(true)}
-          >
-            <Text style={styles.primaryButtonText}>Login / Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-    return (
-      <View
-        style={[
-          styles.profileCard,
-          { backgroundColor: theme.surface, borderColor: theme.border },
-        ]}
-      >
-        <Text style={[styles.profileTitle, { color: theme.accent }]}>
-          Your Profile 👤
-        </Text>
-        <View style={[styles.avatar, { backgroundColor: theme.activeTab }]}>
-          <Text style={[styles.avatarText, { color: theme.accent }]}>
-            {authUser.name.charAt(0).toUpperCase()}
-          </Text>
-        </View>
-        <Text style={[styles.profileName, { color: theme.text }]}>
-          {authUser.name}
-        </Text>
-        <Text style={[styles.profileText, { color: theme.secondaryText }]}>
-          {authUser.email}
-        </Text>
-        <Text style={[styles.roleText, { color: theme.accent }]}>
-          Account: {authUser.role}
-        </Text>
-        {authUser.role === "admin" && (
-          <TouchableOpacity
-            style={[
-              styles.secondaryButton,
-              { backgroundColor: theme.activeTab },
-            ]}
-            onPress={() =>
-              Alert.alert(
-                "Admin Dashboard",
-                "We will connect the admin dashboard next.",
-              )
-            }
-          >
-            <Text style={[styles.secondaryButtonText, { color: theme.accent }]}>
-              Admin Dashboard
-            </Text>
-          </TouchableOpacity>
-        )}
-        <TouchableOpacity
-          style={[styles.secondaryButton, { backgroundColor: theme.activeTab }]}
-          onPress={() => {
-            setSettingsReturnToProfile(true);
-            setSettingsVisible(false);
-            setActiveTab("Settings");
-          }}
-        >
-          <Text style={[styles.secondaryButtonText, { color: theme.accent }]}>
-            ⚙️ Settings
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <Text style={styles.logoutButtonText}>Logout</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
+
   const renderSettings = () => (
     <View
       style={[
@@ -599,7 +510,23 @@ export default function App() {
       );
     }
     if (activeTab === "Profile") {
-      return settingsVisible ? renderSettings() : renderProfile();
+      if (settingsVisible) {
+        return renderSettings();
+      }
+
+      return (
+        <ProfileScreen
+          authUser={authUser}
+          theme={theme}
+          onLoginPress={() => setAuthModalVisible(true)}
+          onSettingsPress={() => {
+            setSettingsReturnToProfile(true);
+            setSettingsVisible(false);
+            setActiveTab("Settings");
+          }}
+          onLogoutPress={handleLogout}
+        />
+      );
     }
     if (activeTab === "Favourites") {
       if (!authUser) {
@@ -657,9 +584,6 @@ export default function App() {
               onChangeText={setIngredientsInput}
               autoCapitalize="none"
             />
-            <Text style={[styles.hint, { color: theme.secondaryText }]}>
-              Results update automatically as you type.
-            </Text>
           </>
         )}
         <ScrollView
@@ -683,11 +607,7 @@ export default function App() {
               </Text>
             </View>
           )}
-          <Text style={[styles.sectionTitle, { color: theme.text }]}>
-            {activeTab === "Search"
-              ? `Search Results (${recipes.length})`
-              : `Explore Recipes (${recipes.length})`}
-          </Text>
+
           {renderRecipeList(recipes)}
         </ScrollView>
       </>
