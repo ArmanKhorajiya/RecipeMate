@@ -23,6 +23,12 @@ const recipeSchema = new mongoose.Schema(
       default: "Other",
     },
 
+    mealTypes: {
+      type: [String],
+      enum: ["Breakfast", "Lunch", "Dinner"],
+      default: [],
+    },
+
     cookingTime: {
       type: Number,
       required: true,

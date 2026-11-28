@@ -1,11 +1,6 @@
-
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 type HeaderTheme = {
   surface: string;
@@ -14,46 +9,64 @@ type HeaderTheme = {
 
 type Props = {
   theme: HeaderTheme;
+  title?: string;
+  subtitle?: string;
+  userInitials?: string | null;
   onHomePress: () => void;
   onProfilePress: () => void;
 };
 
+const COLORS = {
+  primary: "#F7930A",
+  cream: "#FFF7ED",
+  white: "#FFFFFF",
+  brown: "#2B1608",
+  border: "#E8D8C7",
+};
+
 export default function AppHeader({
-  theme,
+  title = "Welcome back!",
+  subtitle,
+  userInitials,
   onHomePress,
   onProfilePress,
 }: Props) {
   return (
-    <View
-      style={[
-        styles.topBar,
-        {
-          backgroundColor: theme.surface,
-        },
-      ]}
-    >
+    <View style={styles.topBar}>
+      {/* Screen Title */}
       <TouchableOpacity
         onPress={onHomePress}
-        accessibilityLabel="Go to Home"
         activeOpacity={0.7}
+        accessibilityLabel="Go to Home"
+        style={styles.titleContainer}
       >
-        <Text
-          style={[
-            styles.appTitle,
-            { color: theme.accent },
-          ]}
-        >
-          RecipeMate 🍲
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
         </Text>
+
+        {subtitle ? (
+          <Text style={styles.subtitle} numberOfLines={1}>
+            {subtitle}
+          </Text>
+        ) : null}
       </TouchableOpacity>
 
+      {/* Profile Button */}
       <TouchableOpacity
-        style={styles.profileIconButton}
+        style={styles.profileButton}
         onPress={onProfilePress}
         accessibilityLabel="Open profile"
         activeOpacity={0.7}
       >
-        <Text style={styles.profileIcon}>👤</Text>
+        {userInitials ? (
+          <Text style={styles.initials}>{userInitials}</Text>
+        ) : (
+          <MaterialCommunityIcons
+            name="account-outline"
+            size={25}
+            color={COLORS.brown}
+          />
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -61,28 +74,47 @@ export default function AppHeader({
 
 const styles = StyleSheet.create({
   topBar: {
+    backgroundColor: COLORS.primary,
     paddingHorizontal: 20,
-    paddingBottom: 12,
+    paddingVertical: 14,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
 
-  appTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
+  titleContainer: {
+    flex: 1,
+    marginRight: 12,
   },
 
-  profileIconButton: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    backgroundColor: "#E5F2E3",
+  title: {
+    fontSize: 21,
+    fontWeight: "800",
+    color: COLORS.brown,
+  },
+
+  subtitle: {
+    fontSize: 13,
+    fontWeight: "500",
+    color: COLORS.brown,
+    opacity: 0.8,
+    marginTop: 3,
+  },
+
+  profileButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: COLORS.cream,
+    borderWidth: 1,
+    borderColor: COLORS.border,
     alignItems: "center",
     justifyContent: "center",
   },
 
-  profileIcon: {
-    fontSize: 22,
+  initials: {
+    fontSize: 14,
+    fontWeight: "800",
+    color: COLORS.brown,
   },
 });

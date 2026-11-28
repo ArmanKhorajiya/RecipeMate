@@ -13,6 +13,7 @@ import {
 
 import * as SecureStore from "expo-secure-store";
 import { API_BASE_URL } from "../constants/api";
+import { saveToken } from "../utils/storage";
 
 type AuthUser = {
   id: string;
@@ -100,7 +101,7 @@ export default function AuthScreen({
         throw new Error(loginData.message || "Login failed.");
       }
 
-      await SecureStore.setItemAsync("recipemate_token", loginData.token);
+      await saveToken("recipemate_token", loginData.token);
 
       onAuthenticated(loginData.token, loginData.user);
     } catch (err) {
